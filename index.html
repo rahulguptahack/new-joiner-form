@@ -1,6 +1,25 @@
-url
+<!DOCTYPE html>
+<html>
+<head>
+  <title>New Joiner Form</title>
+</head>
+<body>
+  <form id="joiner-form">
+    <label>Name:</label><input type="text" name="name" /><br />
+    <label>Email:</label><input type="email" name="email" /><br />
+    <button type="submit">Submit</button>
+  </form>
 
-https://script.google.com/macros/s/AKfycby67SXUnpB2qNBrqfhUNcrnBeUaQlaXiAQ3LPaoIfGkQOOP8_oC1kxM3Vthb746gHuC/exec
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycb.../exec';
+    const form = document.forms['joiner-form'];
 
-id
-AKfycby67SXUnpB2qNBrqfhUNcrnBeUaQlaXiAQ3LPaoIfGkQOOP8_oC1kxM3Vthb746gHuC
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => alert("Submitted successfully!"))
+        .catch(error => console.error('Error!', error.message))
+    });
+  </script>
+</body>
+</html>
